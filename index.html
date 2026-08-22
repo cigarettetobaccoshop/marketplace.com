@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="R2 Nusantara">
 <meta name="application-name" content="R2 Nusantara">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="canonical" href="https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/">
+<link rel="canonical" href="https://cigarettetobaccoshop.github.io/marketplace.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/logo.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/logo/logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/logo.png">
@@ -22,7 +22,7 @@
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/">
+<meta property="og:url" content="https://cigarettetobaccoshop.github.io/marketplace.com/">
 <meta property="og:title" content="R2 Nusantara — Distributor Rokok Grosir Premium Malang">
 <meta property="og:description" content="Gudang distributor resmi. Bayar setelah resi keluar. Gratis ongkir min 1 bal. 233+ merek ready stock (R2 & Resmi).">
 <meta property="og:image" content="assets/logo/preview.jpg">
@@ -31,53 +31,6 @@
 <meta property="og:image:alt" content="R2 Nusantara - Gudang Distributor Rokok Grosir Malang">
 <meta property="og:site_name" content="R2 Nusantara">
 <meta property="og:locale" content="id_ID">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="R2 Nusantara – Distributor Rokok Grosir Premium Malang">
-<meta name="twitter:description" content="Gudang distributor resmi. Bayar setelah resi keluar. Gratis ongkir min 1 bal. 233+ merek ready stock.">
-<meta name="twitter:image" content="assets/logo/preview.jpg">
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WholesaleStore",
-  "name": "CV. R2 Nusantara",
-  "alternateName": "R2 Nusantara",
-  "description": "Gudang distributor rokok resmi Malang. 233+ merek ready stock.",
-  "url": "https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/",
-  "logo": "assets/logo/logo.png",
-  "image": "assets/logo/preview.jpg",
-  "priceRange": "Rp 65.000 - Rp 480.000",
-  "telephone": "+6285715905079",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Desa Karangduren, Kec. Pakisaji",
-    "addressLocality": "Kab. Malang",
-    "addressRegion": "Jawa Timur",
-    "postalCode": "65162",
-    "addressCountry": "ID"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "-8.0597",
-    "longitude": "112.6310"
-  },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    "opens": "08:00",
-    "closes": "17:00"
-  }],
-  "sameAs": [],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "500"
-  }
-}
-</script>
 
 <!-- Preconnect & Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,9 +41,33 @@
 <!-- Preload Critical Assets -->
 <link rel="preload" as="image" href="assets/logo/logo.png">
 <link rel="preload" as="image" href="assets/logo/hero-bg.jpg">
-<link rel="preload" as="style" href="style.css">
-
 <link rel="stylesheet" href="style.css">
+
+<!-- ==========================================
+     INJEKSI TAILWIND CSS (MEMPERBAIKI LAYOUT)
+     ========================================== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: { DEFAULT: '#0F3D6E', light: '#1E5A8E', dark: '#0A2A50' },
+          secondary: '#64748B',
+          muted: '#94A3B8',
+          gold: { DEFAULT: '#C8962E', light: '#D4A84B', dark: '#A67D22' },
+          surface: '#F8FAFC',
+          border: '#E2E8F0'
+        },
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          display: ['"DM Serif Display"', 'serif'],
+          mono: ['"JetBrains Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
 
 <style>
 /* ===== PREMIUM HEADER LOGO ===== */
@@ -126,7 +103,6 @@
   border-color: var(--gold);
 }
 
-/* Online indicator dot */
 .brand-logo-wrap::after {
   content: '';
   position: absolute;
@@ -173,7 +149,6 @@
   background-clip: text;
 }
 
-/* Verified Badge (Centang Biru) */
 .verified-badge {
   display: inline-flex;
   align-items: center;
@@ -202,7 +177,6 @@
   margin-top: 2px;
 }
 
-/* Mobile optimization */
 @media (max-width: 640px) {
   .brand-logo-wrap { width: 36px; height: 36px; }
   .brand-logo-wrap::after { width: 10px; height: 10px; }
@@ -304,9 +278,7 @@
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
-.hero-stat-item {
-  text-align: center;
-}
+.hero-stat-item { text-align: center; }
 .hero-stat-value {
   font-family: 'JetBrains Mono', monospace;
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -404,7 +376,7 @@
   z-index: 0;
 }
 
-/* ===== UTILITY ===== */
+/* ===== UTILITY BUTTONS ===== */
 .btn-primary {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   color: white;
@@ -446,7 +418,7 @@
 }
 </style>
 </head>
-<body class="text-primary bg-surface">
+<body class="text-primary bg-surface font-sans antialiased">
 
 <!-- ===== LOADING SCREEN ===== -->
 <div id="loadingScreen" class="loading-screen">
@@ -462,7 +434,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 md:h-20">
       
-      <!-- LOGO BRAND - UPGRADED -->
+      <!-- LOGO BRAND -->
       <a href="#" class="brand-header" aria-label="R2 Nusantara - Beranda">
         <div class="brand-logo-wrap">
           <img src="assets/logo/logo.png" alt="R2 Nusantara Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%230F3D6E%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2265%22 font-size=%2240%22 fill=%22%23C8962E%22 text-anchor=%22middle%22 font-weight=%22bold%22>R2</text></svg>'">
@@ -528,11 +500,11 @@
       </p>
       
       <div class="flex flex-col sm:flex-row gap-3">
-        <a href="#katalog" class="btn-primary">
+        <a href="#katalog" class="btn-primary justify-center">
           <i class="fas fa-box-open"></i>
           Lihat Katalog
         </a>
-        <a href="https://wa.me/6285715905079" target="_blank" class="btn-secondary">
+        <a href="https://wa.me/6285715905079" target="_blank" class="btn-secondary justify-center">
           <i class="fab fa-whatsapp"></i>
           Chat Admin
         </a>
@@ -568,7 +540,7 @@
         Lihat Semua <i class="fas fa-arrow-right text-xs"></i>
       </a>
     </div>
-    <div id="editorsPick" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"></div>
+    <div id="editorsPick" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4"></div>
   </div>
 </section>
 
@@ -612,7 +584,7 @@
     <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
     
     <!-- No Results -->
-    <div id="noResults" class="hidden text-center py-16 bg-white rounded-xl border border-border">
+    <div id="noResults" class="hidden text-center py-16 bg-white rounded-xl border border-border flex flex-col items-center">
       <i class="fas fa-search text-5xl text-muted/30 mb-4"></i>
       <h3 class="text-lg font-bold text-primary mb-2">Produk Tidak Ditemukan</h3>
       <p class="text-secondary text-sm mb-4">Coba ubah filter atau kata kunci pencarian</p>
@@ -678,14 +650,14 @@
           <span class="text-sm opacity-90">4.9/5 dari <span id="reviewCount">6</span> ulasan</span>
         </div>
       </div>
-      <button onclick="openReviewModal()" class="px-5 py-2.5 bg-gold hover:bg-gold-light text-white rounded-lg font-semibold text-sm transition-all self-start md:self-auto">
+      <button onclick="openReviewModal()" class="px-5 py-2.5 bg-gold hover:bg-gold-light text-white rounded-lg font-semibold text-sm transition-all self-start md:self-auto flex items-center">
         <i class="fas fa-pen mr-2"></i>Tulis Ulasan
       </button>
     </div>
     
     <div class="relative">
       <div id="testimonialTrack" class="testimonial-slider-track"></div>
-      <div class="flex justify-center gap-2 mt-6">
+      <div class="flex justify-center items-center gap-2 mt-6">
         <button id="testimonialPrev" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all">
           <i class="fas fa-chevron-left text-sm"></i>
         </button>
@@ -705,47 +677,47 @@
       <div class="text-xs font-bold text-gold uppercase tracking-widest mb-2">Pertanyaan Umum</div>
       <h2 class="text-3xl md:text-4xl font-display text-primary">Informasi Penting Seputar Pemesanan</h2>
     </div>
-    <div class="faq-container">
-      <div class="faq-item">
-        <button class="faq-question w-full flex items-center justify-between p-5 text-left">
+    <div class="faq-container flex flex-col gap-2">
+      <div class="faq-item bg-white rounded-lg border border-border overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between p-5 text-left bg-white focus:outline-none">
           <span class="font-bold text-primary text-sm md:text-base">Bagaimana sistem pembayarannya?</span>
           <span class="faq-icon w-8 h-8 rounded-full bg-surface flex items-center justify-center text-primary transition-all"><i class="fas fa-chevron-down text-xs"></i></span>
         </button>
         <div class="faq-answer overflow-hidden transition-all" style="max-height: 0;">
-          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed">
+          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed border-l-4 border-gold ml-5">
             Kami menggunakan sistem aman: Anda transfer setelah nomor resi keluar. Menerima BCA, Mandiri, BNI.
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question w-full flex items-center justify-between p-5 text-left">
+      <div class="faq-item bg-white rounded-lg border border-border overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between p-5 text-left bg-white focus:outline-none">
           <span class="font-bold text-primary text-sm md:text-base">Ekspedisi apa saja yang tersedia?</span>
           <span class="faq-icon w-8 h-8 rounded-full bg-surface flex items-center justify-center text-primary transition-all"><i class="fas fa-chevron-down text-xs"></i></span>
         </button>
         <div class="faq-answer overflow-hidden transition-all" style="max-height: 0;">
-          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed">
+          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed border-l-4 border-gold ml-5">
             Kami bekerjasama dengan JNE, JNT, SiCepat Express, Indah Cargo, dan ekspedisi lainnya untuk pengiriman ke seluruh Indonesia.
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question w-full flex items-center justify-between p-5 text-left">
+      <div class="faq-item bg-white rounded-lg border border-border overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between p-5 text-left bg-white focus:outline-none">
           <span class="font-bold text-primary text-sm md:text-base">Berapa minimal pemesanan?</span>
           <span class="faq-icon w-8 h-8 rounded-full bg-surface flex items-center justify-center text-primary transition-all"><i class="fas fa-chevron-down text-xs"></i></span>
         </button>
         <div class="faq-answer overflow-hidden transition-all" style="max-height: 0;">
-          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed">
+          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed border-l-4 border-gold ml-5">
             Minimal 1 bal (10 slop/100 pak) untuk harga grosir. Gratis ongkir untuk area tertentu dengan minimal 1 bal.
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question w-full flex items-center justify-between p-5 text-left">
+      <div class="faq-item bg-white rounded-lg border border-border overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between p-5 text-left bg-white focus:outline-none">
           <span class="font-bold text-primary text-sm md:text-base">Dimana lokasi gudang Anda?</span>
           <span class="faq-icon w-8 h-8 rounded-full bg-surface flex items-center justify-center text-primary transition-all"><i class="fas fa-chevron-down text-xs"></i></span>
         </button>
         <div class="faq-answer overflow-hidden transition-all" style="max-height: 0;">
-          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed">
+          <div class="faq-answer-inner px-5 pb-5 text-secondary text-sm leading-relaxed border-l-4 border-gold ml-5">
             Gudang kami berlokasi di WJMC+WG8, Karangduren, Kec. Pakisaji, Kabupaten Malang, Jawa Timur 65162.
           </div>
         </div>
@@ -864,12 +836,12 @@
       <div>
         <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Mitra Ekspedisi</h4>
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">JNE</span>
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">JNT</span>
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">SiCepat</span>
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">Indah Cargo</span>
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">AnterAja</span>
-          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold">Ninja</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">JNE</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">JNT</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">SiCepat</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">Indah Cargo</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">AnterAja</span>
+          <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-md text-xs font-semibold text-white">Ninja</span>
         </div>
         
         <!-- Newsletter -->
@@ -889,10 +861,10 @@
         © 2026 <span class="text-white font-bold">R2 Nusantara</span> - Cigarette Tobacco Shop. All rights reserved.
       </div>
       <div class="flex items-center gap-3">
-        <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition-all"><i class="fab fa-instagram text-sm"></i></a>
-        <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
-        <a href="https://wa.me/6285715905079" aria-label="WhatsApp" class="w-8 h-8 rounded-full bg-white/10 hover:bg-green-500 flex items-center justify-center transition-all"><i class="fab fa-whatsapp text-sm"></i></a>
-        <a href="#" aria-label="TikTok" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold flex items-center justify-center transition-all"><i class="fab fa-tiktok text-sm"></i></a>
+        <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-sm"></i></a>
+        <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold text-white flex items-center justify-center transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+        <a href="https://wa.me/6285715905079" aria-label="WhatsApp" class="w-8 h-8 rounded-full bg-white/10 hover:bg-green-500 text-white flex items-center justify-center transition-all"><i class="fab fa-whatsapp text-sm"></i></a>
+        <a href="#" aria-label="TikTok" class="w-8 h-8 rounded-full bg-white/10 hover:bg-gold text-white flex items-center justify-center transition-all"><i class="fab fa-tiktok text-sm"></i></a>
       </div>
     </div>
   </div>
@@ -919,25 +891,25 @@
 
 <!-- ===== MOBILE BOTTOM NAV ===== -->
 <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pb-3 pt-2 bg-white/95 backdrop-blur-lg border-t border-border">
-  <div class="glass-capsule-dock max-w-md mx-auto justify-around">
-    <a href="#beranda" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
-    <a href="#katalog" class="nav-item"><i class="fas fa-box"></i><span>Katalog</span></a>
-    <button id="mobileBottomWishlist" class="nav-item relative"><i class="far fa-heart"></i><span>Wishlist</span><span id="mobileBottomWishlistBadge" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span></button>
-    <button id="mobileBottomCart" class="nav-item relative"><i class="fas fa-shopping-cart"></i><span>Keranjang</span><span id="mobileBottomCartBadge" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-gold text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span></button>
-    <a href="https://wa.me/6285715905079" target="_blank" class="nav-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+  <div class="glass-capsule-dock max-w-md mx-auto justify-around flex w-full">
+    <a href="#beranda" class="nav-item active flex-1 text-center"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#katalog" class="nav-item flex-1 text-center"><i class="fas fa-box"></i><span>Katalog</span></a>
+    <button id="mobileBottomWishlist" class="nav-item relative flex-1 text-center"><i class="far fa-heart"></i><span>Wishlist</span><span id="mobileBottomWishlistBadge" class="hidden absolute -top-1 right-2 md:-right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span></button>
+    <button id="mobileBottomCart" class="nav-item relative flex-1 text-center"><i class="fas fa-shopping-cart"></i><span>Keranjang</span><span id="mobileBottomCartBadge" class="hidden absolute -top-1 right-2 md:-right-1 w-4 h-4 bg-gold text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span></button>
+    <a href="https://wa.me/6285715905079" target="_blank" class="nav-item flex-1 text-center"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
   </div>
 </nav>
 
 <!-- ===== CART SIDEBAR ===== -->
-<div id="cartSidebar" class="hidden fixed inset-0 z-50">
+<div id="cartSidebar" class="hidden fixed inset-0 z-50 flex justify-end">
   <div class="absolute inset-0 modal-overlay" onclick="closeCart()"></div>
-  <div id="cartContent" class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-    <div class="p-5 border-b border-border flex items-center justify-between">
+  <div id="cartContent" class="relative h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 border-b border-border flex items-center justify-between bg-white">
       <h3 class="text-lg font-display text-primary">Keranjang Belanja</h3>
-      <button onclick="closeCart()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center"><i class="fas fa-times text-primary"></i></button>
+      <button onclick="closeCart()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center text-primary"><i class="fas fa-times"></i></button>
     </div>
-    <div id="cartItems" class="flex-1 overflow-y-auto p-5"></div>
-    <div class="p-5 border-t border-border bg-surface">
+    <div id="cartItems" class="flex-1 overflow-y-auto p-5 bg-white"></div>
+    <div class="p-5 border-t border-border bg-surface mt-auto">
       <div class="flex justify-between items-center mb-4">
         <span class="text-sm text-secondary">Total</span>
         <span id="cartTotal" class="text-xl font-bold text-gold font-mono">Rp 0</span>
@@ -948,14 +920,14 @@
 </div>
 
 <!-- ===== WISHLIST SIDEBAR ===== -->
-<div id="wishlistSidebar" class="hidden fixed inset-0 z-50">
+<div id="wishlistSidebar" class="hidden fixed inset-0 z-50 flex justify-end">
   <div class="absolute inset-0 modal-overlay" onclick="closeWishlist()"></div>
-  <div id="wishlistContent" class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-    <div class="p-5 border-b border-border flex items-center justify-between">
+  <div id="wishlistContent" class="relative h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 border-b border-border flex items-center justify-between bg-white">
       <h3 class="text-lg font-display text-primary">Wishlist</h3>
-      <button onclick="closeWishlist()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center"><i class="fas fa-times text-primary"></i></button>
+      <button onclick="closeWishlist()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center text-primary"><i class="fas fa-times"></i></button>
     </div>
-    <div id="wishlistItems" class="flex-1 overflow-y-auto p-5"></div>
+    <div id="wishlistItems" class="flex-1 overflow-y-auto p-5 bg-white"></div>
   </div>
 </div>
 
@@ -963,17 +935,17 @@
 <div id="quickViewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeQuickView()"></div>
   <div id="quickViewContent" class="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
-    <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center z-10"><i class="fas fa-times text-primary"></i></button>
+    <!-- Konten di-generate lewat app.js -->
   </div>
 </div>
 
 <!-- ===== CHECKOUT MODAL ===== -->
 <div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeCheckout()"></div>
-  <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 flex flex-col">
     <div class="p-5 border-b border-border flex items-center justify-between sticky top-0 bg-white z-10">
       <h3 class="text-lg font-display text-primary">Checkout</h3>
-      <button onclick="closeCheckout()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center"><i class="fas fa-times text-primary"></i></button>
+      <button onclick="closeCheckout()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center text-primary"><i class="fas fa-times"></i></button>
     </div>
     <form id="checkoutForm" class="p-5 space-y-4">
       <div>
@@ -1011,9 +983,9 @@
 <div id="reviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeReviewModal()"></div>
   <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full transform scale-95 opacity-0 transition-all duration-300">
-    <div class="p-5 border-b border-border flex items-center justify-between">
+    <div class="p-5 border-b border-border flex items-center justify-between bg-white">
       <h3 class="text-lg font-display text-primary">Tulis Ulasan</h3>
-      <button onclick="closeReviewModal()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center"><i class="fas fa-times text-primary"></i></button>
+      <button onclick="closeReviewModal()" class="w-9 h-9 rounded-lg bg-surface hover:bg-gray-100 flex items-center justify-center text-primary"><i class="fas fa-times"></i></button>
     </div>
     <form id="reviewForm" class="p-5 space-y-4">
       <div>
@@ -1027,11 +999,11 @@
       <div>
         <label class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Rating *</label>
         <div class="flex gap-2 text-2xl cursor-pointer" id="starRating">
-          <button type="button" class="star-btn text-gold" data-rating="1"><i class="fas fa-star"></i></button>
-          <button type="button" class="star-btn text-gold" data-rating="2"><i class="fas fa-star"></i></button>
-          <button type="button" class="star-btn text-gold" data-rating="3"><i class="fas fa-star"></i></button>
-          <button type="button" class="star-btn text-gold" data-rating="4"><i class="fas fa-star"></i></button>
-          <button type="button" class="star-btn text-gold" data-rating="5"><i class="fas fa-star"></i></button>
+          <button type="button" class="star-btn text-gold focus:outline-none" data-rating="1"><i class="fas fa-star"></i></button>
+          <button type="button" class="star-btn text-gold focus:outline-none" data-rating="2"><i class="fas fa-star"></i></button>
+          <button type="button" class="star-btn text-gold focus:outline-none" data-rating="3"><i class="fas fa-star"></i></button>
+          <button type="button" class="star-btn text-gold focus:outline-none" data-rating="4"><i class="fas fa-star"></i></button>
+          <button type="button" class="star-btn text-gold focus:outline-none" data-rating="5"><i class="fas fa-star"></i></button>
         </div>
         <input type="hidden" id="reviewRating" value="5">
       </div>
