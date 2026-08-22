@@ -1,6 +1,6 @@
 /* ============================================
 app.js — Main Application Logic
-R2 Nusantara v7.0 - Enterprise Production
+R2 Nusantara v7.0 - Production Fixed & Upgraded
 ============================================ */
 'use strict';
 
@@ -20,6 +20,17 @@ var COMPANY = window.COMPANY_INFO || {
   location: { address: 'WJMC+WG8, Karangduren, Kec. Pakisaji, Kabupaten Malang, Jawa Timur 65162' }
 };
 var PRODUCTS = window.PRODUCTS || [];
+
+// ===== HELPER: WHATSAPP NUMBER NORMALIZER =====
+function getCleanWaNumber(phone) {
+  var cleaned = (phone || '').replace(/\D/g, '');
+  if (cleaned.startsWith('0')) {
+    cleaned = '62' + cleaned.substring(1);
+  } else if (!cleaned.startsWith('62')) {
+    cleaned = '62' + cleaned;
+  }
+  return cleaned;
+}
 
 // ===== ASSET PATHS =====
 var ASSETS = {
@@ -68,31 +79,13 @@ function generateProductThumbnail(product) {
 
   var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">' +
     '<defs>' +
-      '<linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-        '<stop offset="0%" style="stop-color:#2a2a2a"/>' +
-        '<stop offset="50%" style="stop-color:#1a1a1a"/>' +
-        '<stop offset="100%" style="stop-color:#0d0d0d"/>' +
-      '</linearGradient>' +
-      '<linearGradient id="packGrad" x1="0%" y1="0%" x2="0%" y2="100%">' +
-        '<stop offset="0%" style="stop-color:#ffffff"/>' +
-        '<stop offset="100%" style="stop-color:#f0f0f0"/>' +
-      '</linearGradient>' +
-      '<linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-        '<stop offset="0%" style="stop-color:#888888"/>' +
-        '<stop offset="30%" style="stop-color:#e0e0e0"/>' +
-        '<stop offset="50%" style="stop-color:#ffffff"/>' +
-        '<stop offset="70%" style="stop-color:#c0c0c0"/>' +
-        '<stop offset="100%" style="stop-color:#666666"/>' +
-      '</linearGradient>' +
-      '<filter id="packShadow" x="-50%" y="-50%" width="200%" height="200%">' +
-        '<feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#000" flood-opacity="0.6"/>' +
-      '</filter>' +
-      '<filter id="textShadow">' +
-        '<feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="#000" flood-opacity="0.3"/>' +
-      '</filter>' +
+      '<linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2a2a2a"/><stop offset="50%" style="stop-color:#1a1a1a"/><stop offset="100%" style="stop-color:#0d0d0d"/></linearGradient>' +
+      '<linearGradient id="packGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffffff"/><stop offset="100%" style="stop-color:#f0f0f0"/></linearGradient>' +
+      '<linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#888888"/><stop offset="30%" style="stop-color:#e0e0e0"/><stop offset="50%" style="stop-color:#ffffff"/><stop offset="70%" style="stop-color:#c0c0c0"/><stop offset="100%" style="stop-color:#666666"/></linearGradient>' +
+      '<filter id="packShadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#000" flood-opacity="0.6"/></filter>' +
+      '<filter id="textShadow"><feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="#000" flood-opacity="0.3"/></filter>' +
     '</defs>' +
-    '<rect width="600" height="600" fill="url(#bgGrad)"/>' +
-    bgPacks +
+    '<rect width="600" height="600" fill="url(#bgGrad)"/>' + bgPacks +
     '<rect x="0" y="520" width="600" height="80" fill="#1a1a1a" opacity="0.5"/>' +
     '<g filter="url(#packShadow)" transform="translate(150, 80)">' +
       '<rect x="0" y="30" width="50" height="400" fill="#d4d4d4" rx="2"/>' +
@@ -106,11 +99,7 @@ function generateProductThumbnail(product) {
       '<circle cx="135" cy="78" r="25" fill="#d0d0d0" opacity="0.6"/>' +
       '<text x="135" y="85" font-family="Arial" font-size="30" fill="#999" text-anchor="middle">⚠</text>' +
       '<rect x="215" y="42" width="65" height="65" fill="#fff" stroke="#000" stroke-width="0.5"/>' +
-      '<rect x="220" y="47" width="15" height="15" fill="#000"/>' +
-      '<rect x="260" y="47" width="15" height="15" fill="#000"/>' +
-      '<rect x="220" y="87" width="15" height="15" fill="#000"/>' +
-      '<rect x="240" y="67" width="15" height="15" fill="#000"/>' +
-      '<rect x="260" y="87" width="15" height="15" fill="#000"/>' +
+      '<rect x="220" y="47" width="15" height="15" fill="#000"/><rect x="260" y="47" width="15" height="15" fill="#000"/><rect x="220" y="87" width="15" height="15" fill="#000"/><rect x="240" y="67" width="15" height="15" fill="#000"/><rect x="260" y="87" width="15" height="15" fill="#000"/>' +
       '<rect x="60" y="120" width="280" height="45" fill="#000000"/>' +
       '<text x="200" y="138" font-family="Arial" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="bold">PERINGATAN: MEROKOK MEMBUNUHMU</text>' +
       '<text x="200" y="155" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">WARNING: SMOKING KILLS</text>' +
@@ -121,41 +110,10 @@ function generateProductThumbnail(product) {
       '<text x="200" y="395" font-family="Arial" font-size="14" fill="' + accentColor + '" text-anchor="middle" font-weight="bold" letter-spacing="1">' + brandName.substring(0, 22) + '</text>' +
       '<rect x="60" y="405" width="280" height="25" fill="#000000"/>' +
       '<text x="200" y="422" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold" letter-spacing="3">' + sideText + '</text>' +
-      '<rect x="65" y="438" width="110" height="38" fill="#fff" stroke="#000" stroke-width="0.5"/>' +
-      '<rect x="70" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="74" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="77" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="82" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="85" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="89" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="92" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="97" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="101" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="104" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="108" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="113" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="116" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="120" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="123" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="128" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="132" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="135" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="139" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="144" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="147" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="151" y="441" width="1" height="32" fill="#000"/>' +
-      '<rect x="154" y="441" width="3" height="32" fill="#000"/>' +
-      '<rect x="159" y="441" width="2" height="32" fill="#000"/>' +
-      '<rect x="163" y="441" width="1" height="32" fill="#000"/>' +
-      '<text x="120" y="472" font-family="monospace" font-size="7" fill="#000" text-anchor="middle">8991234567890</text>' +
-    '</g>' +
-    '<g transform="translate(150, 530) scale(1, -0.25)" opacity="0.15">' +
-      '<rect x="50" y="0" width="300" height="440" fill="#ffffff" rx="3"/>' +
-      '<text x="200" y="320" font-family="Georgia, serif" font-size="140" fill="#000" text-anchor="middle" font-weight="bold">R2</text>' +
     '</g>' +
     '<text x="570" y="580" font-family="Arial" font-size="13" font-style="italic" font-weight="600" fill="rgba(200, 150, 46, 0.4)" text-anchor="end" letter-spacing="2">233 VARIAN</text>' +
   '</svg>';
-  return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
 
 function getProductImage(product) {
@@ -202,7 +160,7 @@ function buildStarRating(rating) {
   for (var i = 0; i < fullStars; i++) html += '<i class="fas fa-star"></i>';
   if (hasHalfStar) html += '<i class="fas fa-star-half-alt"></i>';
   var emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-  for (var i = 0; i < emptyStars; i++) html += '<i class="far fa-star"></i>';
+  for (var j = 0; j < emptyStars; j++) html += '<i class="far fa-star"></i>';
   return html;
 }
 
@@ -455,7 +413,7 @@ function checkDeepLink() {
   if (productId) setTimeout(function() { openQuickView(productId); }, 900);
 }
 
-// ===== CART =====
+// ===== CART SYSTEM (UPDATED REALTIME SYNC) =====
 function addToCart(productId, quantity) {
   quantity = quantity || 1;
   var product = PRODUCTS.find(function(p) { return p.id === productId; });
@@ -483,23 +441,11 @@ function updateCartQuantity(productId, quantity) {
   }
 }
 
-function updateCartUI() {
-  var totalItems = cart.reduce(function(sum, item) { return sum + item.quantity; }, 0);
-  ['cartBadge', 'mobileCartBadge', 'mobileBottomCartBadge'].forEach(function(id) {
-    var badge = document.getElementById(id);
-    if (badge) {
-      if (totalItems > 0) { badge.classList.remove('hidden'); badge.textContent = totalItems; }
-      else badge.classList.add('hidden');
-    }
-  });
-}
-
-function openCart() {
-  var sidebar = document.getElementById('cartSidebar');
-  var content = document.getElementById('cartContent');
+function renderCartSidebarContent() {
   var itemsContainer = document.getElementById('cartItems');
   var totalElement = document.getElementById('cartTotal');
-  if (!sidebar || !content || !itemsContainer) return;
+  if (!itemsContainer) return;
+
   if (cart.length === 0) {
     itemsContainer.innerHTML = '<div class="text-center py-10"><i class="fas fa-shopping-cart text-5xl text-muted/30 mb-3"></i><p class="text-secondary text-sm">Keranjang Anda kosong</p><button onclick="closeCart(); document.getElementById(\'katalog\').scrollIntoView({behavior: \'smooth\'})" class="mt-3 px-5 py-2 bg-gradient-to-r from-gold to-gold-light text-white font-semibold rounded-lg text-sm">Belanja Sekarang</button></div>';
   } else {
@@ -521,6 +467,29 @@ function openCart() {
   }
   var total = cart.reduce(function(sum, item) { return sum + (item.price * item.quantity); }, 0);
   if (totalElement) totalElement.textContent = 'Rp ' + formatPrice(total);
+}
+
+function updateCartUI() {
+  var totalItems = cart.reduce(function(sum, item) { return sum + item.quantity; }, 0);
+  ['cartBadge', 'mobileCartBadge', 'mobileBottomCartBadge'].forEach(function(id) {
+    var badge = document.getElementById(id);
+    if (badge) {
+      if (totalItems > 0) { badge.classList.remove('hidden'); badge.textContent = totalItems; }
+      else badge.classList.add('hidden');
+    }
+  });
+
+  var sidebar = document.getElementById('cartSidebar');
+  if (sidebar && !sidebar.classList.contains('hidden')) {
+    renderCartSidebarContent();
+  }
+}
+
+function openCart() {
+  var sidebar = document.getElementById('cartSidebar');
+  var content = document.getElementById('cartContent');
+  if (!sidebar || !content) return;
+  renderCartSidebarContent();
   sidebar.classList.remove('hidden');
   setTimeout(function() { content.classList.remove('translate-x-full'); }, 10);
 }
@@ -533,7 +502,7 @@ function closeCart() {
   setTimeout(function() { sidebar.classList.add('hidden'); }, 300);
 }
 
-// ===== WISHLIST =====
+// ===== WISHLIST SYSTEM (UPDATED REALTIME SYNC) =====
 function toggleWishlist(productId, event) {
   if (event) event.stopPropagation();
   var product = PRODUCTS.find(function(p) { return p.id === productId; });
@@ -551,21 +520,9 @@ function toggleWishlist(productId, event) {
   renderProductGrid();
 }
 
-function updateWishlistUI() {
-  ['wishlistBadge', 'mobileWishlistBadge', 'mobileBottomWishlistBadge'].forEach(function(id) {
-    var badge = document.getElementById(id);
-    if (badge) {
-      if (wishlist.length > 0) { badge.classList.remove('hidden'); badge.textContent = wishlist.length; }
-      else badge.classList.add('hidden');
-    }
-  });
-}
-
-function openWishlist() {
-  var sidebar = document.getElementById('wishlistSidebar');
-  var content = document.getElementById('wishlistContent');
+function renderWishlistSidebarContent() {
   var itemsContainer = document.getElementById('wishlistItems');
-  if (!sidebar || !content || !itemsContainer) return;
+  if (!itemsContainer) return;
   if (wishlist.length === 0) {
     itemsContainer.innerHTML = '<div class="text-center py-10"><i class="far fa-heart text-5xl text-muted/30 mb-3"></i><p class="text-secondary text-sm">Wishlist Anda kosong</p><button onclick="closeWishlist(); document.getElementById(\'katalog\').scrollIntoView({behavior: \'smooth\'})" class="mt-3 px-5 py-2 bg-gradient-to-r from-gold to-gold-light text-white font-semibold rounded-lg text-sm">Jelajahi Produk</button></div>';
   } else {
@@ -585,6 +542,28 @@ function openWishlist() {
       '</div>';
     }).filter(Boolean).join('');
   }
+}
+
+function updateWishlistUI() {
+  ['wishlistBadge', 'mobileWishlistBadge', 'mobileBottomWishlistBadge'].forEach(function(id) {
+    var badge = document.getElementById(id);
+    if (badge) {
+      if (wishlist.length > 0) { badge.classList.remove('hidden'); badge.textContent = wishlist.length; }
+      else badge.classList.add('hidden');
+    }
+  });
+
+  var sidebar = document.getElementById('wishlistSidebar');
+  if (sidebar && !sidebar.classList.contains('hidden')) {
+    renderWishlistSidebarContent();
+  }
+}
+
+function openWishlist() {
+  var sidebar = document.getElementById('wishlistSidebar');
+  var content = document.getElementById('wishlistContent');
+  if (!sidebar || !content) return;
+  renderWishlistSidebarContent();
   sidebar.classList.remove('hidden');
   setTimeout(function() { content.classList.remove('translate-x-full'); }, 10);
 }
@@ -597,7 +576,7 @@ function closeWishlist() {
   setTimeout(function() { sidebar.classList.add('hidden'); }, 300);
 }
 
-// ===== CHECKOUT =====
+// ===== CHECKOUT (FIXED WHATSAPP NUMBER URL) =====
 function openCheckout() {
   closeCart();
   var modal = document.getElementById('checkoutModal');
@@ -638,8 +617,9 @@ document.addEventListener('DOMContentLoaded', function() {
       message += '*Total: Rp ' + formatPrice(total) + '*\n\n';
       if (notes) message += 'Catatan: ' + notes + '\n\n';
       message += 'Terima kasih!';
-      var waNumber = COMPANY.contact.whatsapp.replace(/\D/g, '');
-      window.open('https://wa.me/62' + waNumber + '?text=' + encodeURIComponent(message), '_blank');
+      
+      var waNumber = getCleanWaNumber(COMPANY.contact.whatsapp);
+      window.open('https://wa.me/' + waNumber + '?text=' + encodeURIComponent(message), '_blank');
       closeCheckout();
       cart = [];
       saveToStorage();
@@ -847,7 +827,7 @@ function initTestimonialSlider() {
   startAutoPlay();
 }
 
-// ===== ADD REVIEW =====
+// ===== ADD REVIEW (FIXED STAR RATING LOGIC) =====
 function openReviewModal() {
   var modal = document.getElementById('reviewModal');
   if (!modal) return;
@@ -871,23 +851,33 @@ function initReviewForm() {
   var starBtns = document.querySelectorAll('.star-btn');
   var ratingInput = document.getElementById('reviewRating');
   if (!form) return;
+
   starBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      var rating = parseInt(btn.dataset.rating);
+      var rating = parseInt(btn.dataset.rating, 10);
       if (ratingInput) ratingInput.value = rating;
-      starBtns.forEach(function(b, i) {
+      
+      starBtns.forEach(function(b) {
+        var bRating = parseInt(b.dataset.rating, 10);
         var icon = b.querySelector('i');
-        if (i < rating) { icon.className = 'fas fa-star'; b.classList.add('text-gold'); b.classList.remove('text-gray-300'); }
-        else { icon.className = 'far fa-star'; b.classList.remove('text-gold'); b.classList.add('text-gray-300'); }
+        if (bRating <= rating) {
+          icon.className = 'fas fa-star';
+          b.classList.add('text-gold');
+          b.classList.remove('text-gray-300');
+        } else {
+          icon.className = 'far fa-star';
+          b.classList.remove('text-gold');
+          b.classList.add('text-gray-300');
+        }
       });
     });
   });
-  starBtns.forEach(function(b) { var icon = b.querySelector('i'); icon.className = 'fas fa-star'; b.classList.add('text-gold'); b.classList.remove('text-gray-300'); });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     var name = document.getElementById('reviewName').value.trim();
     var location = document.getElementById('reviewLocation').value.trim();
-    var rating = parseInt(document.getElementById('reviewRating').value);
+    var rating = parseInt(document.getElementById('reviewRating').value, 10);
     var text = document.getElementById('reviewText').value.trim();
     if (!name || !location || !text) { showToast('Mohon lengkapi semua field', 'warning'); return; }
     var newReview = { name: name, location: location, rating: rating, text: text, date: new Date().toISOString() };
