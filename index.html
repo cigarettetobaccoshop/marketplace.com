@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="style.css">
 
 <!-- ==========================================
-     INJEKSI TAILWIND CSS (MEMPERBAIKI LAYOUT)
+     INJEKSI TAILWIND CSS
      ========================================== -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -870,27 +870,30 @@
   </div>
 </footer>
 
-<!-- ===== COOKIE BANNER ===== -->
-<div id="cookieBanner" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md bg-white rounded-xl shadow-2xl border border-border p-5 z-40">
-  <div class="flex items-start gap-3">
-    <i class="fas fa-cookie-bite text-gold text-xl mt-1"></i>
+<!-- ===== COOKIE BANNER (DIPERBAIKI POSISI DAN Z-INDEX NYA) ===== -->
+<div id="cookieBanner" class="hidden fixed bottom-24 left-4 right-4 md:bottom-6 md:left-auto md:right-6 md:max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 p-5 z-[100] ring-1 ring-black/5">
+  <div class="flex items-start gap-4">
+    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+      <i class="fas fa-cookie-bite text-gold text-lg"></i>
+    </div>
     <div class="flex-1">
-      <p class="text-sm text-primary mb-3">Kami menggunakan cookie untuk meningkatkan pengalaman. <a href="#" onclick="openLegalModal('cookie'); return false;" class="text-gold font-semibold underline">Pelajari lebih lanjut</a></p>
+      <h4 class="text-sm font-bold text-primary mb-1">Penggunaan Cookie</h4>
+      <p class="text-xs text-secondary mb-3 leading-relaxed">Kami menggunakan cookie untuk meningkatkan pengalaman. <a href="#" onclick="openLegalModal('cookie'); return false;" class="text-gold font-semibold hover:underline">Pelajari lebih lanjut</a></p>
       <div class="flex gap-2">
-        <button onclick="acceptCookies()" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg text-xs font-bold hover:bg-primary-dark transition-all">Terima</button>
-        <button onclick="rejectCookies()" class="flex-1 px-4 py-2 bg-surface text-primary rounded-lg text-xs font-bold hover:bg-gray-100 transition-all">Tolak</button>
+        <button onclick="acceptCookies()" class="flex-1 px-4 py-2.5 bg-primary text-white rounded-lg text-xs font-bold hover:bg-primary-dark transition-all">Terima</button>
+        <button onclick="rejectCookies()" class="px-4 py-2.5 bg-surface text-primary rounded-lg text-xs font-bold hover:bg-gray-100 transition-all border border-border">Tolak</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ===== BACK TO TOP ===== -->
-<button id="backToTop" class="fixed bottom-20 md:bottom-6 right-4 w-11 h-11 rounded-full bg-primary text-white shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all z-40 hover:bg-gold" aria-label="Back to top">
+<button id="backToTop" class="fixed bottom-28 md:bottom-6 right-4 w-11 h-11 rounded-full bg-primary text-white shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all z-40 hover:bg-gold" aria-label="Back to top">
   <i class="fas fa-arrow-up text-sm"></i>
 </button>
 
 <!-- ===== MOBILE BOTTOM NAV ===== -->
-<nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pb-3 pt-2 bg-white/95 backdrop-blur-lg border-t border-border">
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 z-[60] px-3 pb-3 pt-2 bg-white/95 backdrop-blur-lg border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
   <div class="glass-capsule-dock max-w-md mx-auto justify-around flex w-full">
     <a href="#beranda" class="nav-item active flex-1 text-center"><i class="fas fa-home"></i><span>Home</span></a>
     <a href="#katalog" class="nav-item flex-1 text-center"><i class="fas fa-box"></i><span>Katalog</span></a>
@@ -901,7 +904,7 @@
 </nav>
 
 <!-- ===== CART SIDEBAR ===== -->
-<div id="cartSidebar" class="hidden fixed inset-0 z-50 flex justify-end">
+<div id="cartSidebar" class="hidden fixed inset-0 z-[100] flex justify-end">
   <div class="absolute inset-0 modal-overlay" onclick="closeCart()"></div>
   <div id="cartContent" class="relative h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
     <div class="p-5 border-b border-border flex items-center justify-between bg-white">
@@ -920,7 +923,7 @@
 </div>
 
 <!-- ===== WISHLIST SIDEBAR ===== -->
-<div id="wishlistSidebar" class="hidden fixed inset-0 z-50 flex justify-end">
+<div id="wishlistSidebar" class="hidden fixed inset-0 z-[100] flex justify-end">
   <div class="absolute inset-0 modal-overlay" onclick="closeWishlist()"></div>
   <div id="wishlistContent" class="relative h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
     <div class="p-5 border-b border-border flex items-center justify-between bg-white">
@@ -932,7 +935,7 @@
 </div>
 
 <!-- ===== QUICK VIEW MODAL ===== -->
-<div id="quickViewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+<div id="quickViewModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeQuickView()"></div>
   <div id="quickViewContent" class="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
     <!-- Konten di-generate lewat app.js -->
@@ -940,7 +943,7 @@
 </div>
 
 <!-- ===== CHECKOUT MODAL ===== -->
-<div id="checkoutModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+<div id="checkoutModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeCheckout()"></div>
   <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 flex flex-col">
     <div class="p-5 border-b border-border flex items-center justify-between sticky top-0 bg-white z-10">
@@ -980,7 +983,7 @@
 </div>
 
 <!-- ===== REVIEW MODAL ===== -->
-<div id="reviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+<div id="reviewModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeReviewModal()"></div>
   <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full transform scale-95 opacity-0 transition-all duration-300">
     <div class="p-5 border-b border-border flex items-center justify-between bg-white">
@@ -1017,13 +1020,13 @@
 </div>
 
 <!-- ===== LEGAL MODAL ===== -->
-<div id="legalModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+<div id="legalModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
   <div class="absolute inset-0 modal-overlay" onclick="closeLegalModal()"></div>
   <div id="legalContent" class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 transform scale-95 opacity-0 transition-all duration-300"></div>
 </div>
 
 <!-- ===== TOAST CONTAINER ===== -->
-<div id="toastContainer" class="fixed top-20 right-4 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+<div id="toastContainer" class="fixed top-20 right-4 z-[110] flex flex-col gap-2 pointer-events-none"></div>
 
 <!-- Scripts -->
 <script src="data.js"></script>
