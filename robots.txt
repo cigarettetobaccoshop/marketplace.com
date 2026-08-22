@@ -3,24 +3,19 @@
 
 User-agent: *
 Allow: /
-Allow: /assets/logo/
+Allow: /assets/
 Allow: /index.html
 Allow: /sitemap.xml
 Allow: /manifest.json
+Allow: /style.css
+Allow: /app.js
+Allow: /data.js
 
-# Disallow sensitive/system files
-Disallow: /sw.js
-Disallow: /app.js
-Disallow: /data.js
-Disallow: /style.css
-Disallow: /*.json$
+# Disallow system files
 Disallow: /404.html
 
-# Crawl-delay for polite crawling
+# Crawl-delay
 Crawl-delay: 1
 
-# Sitemap location
+# Sitemap
 Sitemap: https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/sitemap.xml
-
-# Host
-Host: https://gudangdistributormalang-r2nusantara.github.io
