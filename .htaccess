@@ -3,7 +3,6 @@
 # Security, Caching & SEO Optimization
 # ============================================
 
-# Enable Rewrite Engine
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -12,7 +11,7 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Remove trailing slash (except root)
+  # Remove trailing slash
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)/$ /$1 [L,R=301]
 
@@ -22,108 +21,41 @@
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # Custom 404 page
+  # Custom 404
   ErrorDocument 404 /404.html
 </IfModule>
 
-# ============================================
 # SECURITY HEADERS
-# ============================================
 <IfModule mod_headers.c>
-  # XSS Protection
   Header set X-XSS-Protection "1; mode=block"
-  
-  # Prevent MIME sniffing
   Header set X-Content-Type-Options "nosniff"
-  
-  # Clickjacking protection
   Header set X-Frame-Options "SAMEORIGIN"
-  
-  # Referrer Policy
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  
-  # Permissions Policy
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  
-  # Remove Server signature
-  Header unset Server
-  Header unset X-Powered-By
 </IfModule>
 
-# ============================================
 # CACHING STRATEGY
-# ============================================
 <IfModule mod_expires.c>
   ExpiresActive On
-  
-  # Default cache
   ExpiresDefault "access plus 1 month"
   
-  # HTML - no cache
   <FilesMatch "\.(html|htm)$">
     ExpiresDefault "access plus 0 seconds"
     Header set Cache-Control "no-cache, no-store, must-revalidate"
   </FilesMatch>
   
-  # CSS & JS - 1 year
   <FilesMatch "\.(css|js)$">
     ExpiresDefault "access plus 1 year"
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   
-  # Images - 1 year
   <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
     ExpiresDefault "access plus 1 year"
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  
-  # Fonts - 1 year
-  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
-    ExpiresDefault "access plus 1 year"
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-  
-  # Manifest
-  <FilesMatch "manifest\.json$">
-    ExpiresDefault "access plus 1 day"
-    Header set Cache-Control "public, max-age=86400"
-  </FilesMatch>
 </IfModule>
 
-# ============================================
 # COMPRESSION
-# ============================================
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml
-  AddOutputFilterByType DEFLATE text/css text/javascript application/javascript
-  AddOutputFilterByType DEFLATE application/json application/manifest+json
-  AddOutputFilterByType DEFLATE image/svg+xml
-  AddOutputFilterByType DEFLATE application/font-woff application/font-woff2
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
-
-# ============================================
-# MIME TYPES
-# ============================================
-<IfModule mod_mime.c>
-  AddType application/manifest+json .webmanifest
-  AddType image/webp .webp
-  AddType image/svg+xml .svg
-  AddType font/woff2 .woff2
-  AddType font/woff .woff
-</IfModule>
-
-# ============================================
-# PROTECT SENSITIVE FILES
-# ============================================
-<FilesMatch "^(data\.js|app\.js|\.htaccess|\.env|\.git|package\.json)$">
-  # Allow only same-origin requests for JS
-  <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "%{HTTP_ORIGIN}e"
-  </IfModule>
-</FilesMatch>
-
-# Block access to hidden files
-<FilesMatch "^\.">
-  Order allow,deny
-  Deny from all
-</FilesMatch>
