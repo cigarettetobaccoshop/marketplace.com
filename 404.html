@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Halaman Tidak Ditemukan | R2 Nusantara</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --primary: #0F3D6E;
+    --gold: #C8962E;
+    --surface: #F8FAFC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #0A2A50 0%, #0F3D6E 50%, #1E5A8E 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 24px;
+    border: 3px solid rgba(200, 150, 46, 0.3);
+    box-shadow: 0 0 60px rgba(200, 150, 46, 0.3);
+  }
+  .error-code {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(5rem, 15vw, 8rem);
+    line-height: 1;
+    background: linear-gradient(135deg, #D4A84B 0%, #C8962E 50%, #A67D22 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 20px rgba(200, 150, 46, 0.3);
+  }
+  .error-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 12px;
+  }
+  .error-desc {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #C8962E 0%, #D4A84B 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(200, 150, 46, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(200, 150, 46, 0.4);
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  .info-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 13px;
+  }
+  .info-box strong { color: #D4A84B; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/logo/logo.png" alt="R2 Nusantara" class="logo" onerror="this.style.display='none'">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+    <p class="error-desc">
+      Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan. <br>
+      Silakan kembali ke beranda atau hubungi admin kami.
+    </p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        <i class="fas fa-home"></i> Kembali ke Beranda
+      </a>
+      <a href="https://wa.me/6285715905079" target="_blank" class="btn btn-secondary">
+        <i class="fab fa-whatsapp"></i> Hubungi Admin
+      </a>
+    </div>
+    <div class="info-box">
+      <strong>R2 Nusantara</strong> — Gudang Distributor Rokok Grosir Resmi Malang<br>
+      233+ Merek Ready Stock · Bayar Setelah Resi · Gratis Ongkir Min 1 Bal
+    </div>
+  </div>
+</body>
+</html>
