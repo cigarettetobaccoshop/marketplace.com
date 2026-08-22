@@ -62,7 +62,10 @@ function loadTestimonials() {
 function generateProductThumbnail(product) {
   var brandName = product.name.toUpperCase();
   var category = product.category || 'R2';
-  var sideText = category === 'Resmi' ? 'RESMI FILTER' : 'KRETEK FILTER';
+  
+  // UPDATE: Mengubah 'KRETEK FILTER' menjadi 'R2 FILTER'
+  var sideText = category === 'Resmi' ? 'RESMI FILTER' : 'R2 FILTER';
+  
   var accentColor = '#1a1a1a';
   if (product.badge === 'hot') accentColor = '#DC2626';
   else if (product.badge === 'vip') accentColor = '#7C3AED';
