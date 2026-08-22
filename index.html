@@ -550,7 +550,17 @@
     <div class="text-center mb-10">
       <div class="text-xs font-bold text-gold uppercase tracking-widest mb-2">Katalog Produk</div>
       <h2 class="text-3xl md:text-4xl font-display text-primary mb-3">233 Merek Rokok Grosir Ready Stock</h2>
-      <p class="text-secondary max-w-2xl mx-auto">Harga tercantum adalah harga per slop (10 bungkus). Semua produk original dari distributor resmi.</p>
+      <p class="text-secondary max-w-2xl mx-auto mb-8">Harga tercantum adalah harga per slop (10 bungkus). Semua produk original dari distributor resmi.</p>
+      
+      <!-- FITUR BARU: TOMBOL REKOMENDASI KATEGORI -->
+      <div class="mb-4">
+        <div class="text-[10px] font-bold text-muted uppercase tracking-wider mb-3">Rekomendasi Pilihan Kategori</div>
+        <div class="flex flex-wrap justify-center gap-3">
+           <button onclick="setCategoryBtn(''); filterByCategory('')" id="btnCatAll" class="cat-btn px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md bg-gold text-white border border-gold focus:outline-none focus:ring-2 focus:ring-gold/50">Semua Produk</button>
+           <button onclick="setCategoryBtn('R2'); filterByCategory('R2')" id="btnCatR2" class="cat-btn px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-primary border border-border hover:border-gold hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50">🔥 Rokok R2</button>
+           <button onclick="setCategoryBtn('Resmi'); filterByCategory('Resmi')" id="btnCatResmi" class="cat-btn px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm bg-white text-primary border border-border hover:border-gold hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50">✨ Rokok Resmi</button>
+        </div>
+      </div>
     </div>
     
     <!-- Filter Bar -->
@@ -566,8 +576,8 @@
         <!-- Category Filter -->
         <select id="categoryFilter" class="px-4 py-3 bg-surface border border-border rounded-lg text-sm font-semibold text-primary focus:outline-none focus:border-gold cursor-pointer">
           <option value="">Semua Kategori</option>
-          <option value="R2">R2</option>
-          <option value="Resmi">Resmi</option>
+          <option value="R2">Rokok R2</option>
+          <option value="Resmi">Rokok Resmi</option>
         </select>
         
         <!-- Sort -->
@@ -588,7 +598,7 @@
       <i class="fas fa-search text-5xl text-muted/30 mb-4"></i>
       <h3 class="text-lg font-bold text-primary mb-2">Produk Tidak Ditemukan</h3>
       <p class="text-secondary text-sm mb-4">Coba ubah filter atau kata kunci pencarian</p>
-      <button onclick="resetFilters()" class="px-5 py-2 bg-primary text-white rounded-lg text-sm font-semibold">Reset Filter</button>
+      <button onclick="resetFilters(); setCategoryBtn('')" class="px-5 py-2 bg-primary text-white rounded-lg text-sm font-semibold">Reset Filter</button>
     </div>
     
     <!-- Pagination -->
@@ -827,8 +837,8 @@
       <div>
         <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Kategori</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" onclick="filterByCategory('R2'); return false;" class="text-white/70 hover:text-gold transition-colors">Rokok R2</a></li>
-          <li><a href="#" onclick="filterByCategory('Resmi'); return false;" class="text-white/70 hover:text-gold transition-colors">Rokok Resmi</a></li>
+          <li><a href="#" onclick="setCategoryBtn('R2'); filterByCategory('R2'); return false;" class="text-white/70 hover:text-gold transition-colors">Rokok R2</a></li>
+          <li><a href="#" onclick="setCategoryBtn('Resmi'); filterByCategory('Resmi'); return false;" class="text-white/70 hover:text-gold transition-colors">Rokok Resmi</a></li>
         </ul>
       </div>
       
@@ -1031,6 +1041,37 @@
 <!-- Scripts -->
 <script src="data.js"></script>
 <script src="app.js"></script>
+
+<!-- ===== SCRIPT TAMBAHAN UNTUK INTERAKSI TOMBOL KATEGORI ===== -->
+<script>
+  function setCategoryBtn(cat) {
+    // Reset semua tombol ke tampilan pasif
+    document.querySelectorAll('.cat-btn').forEach(function(btn) {
+      btn.classList.remove('bg-gold', 'text-white', 'border-gold', 'shadow-md');
+      btn.classList.add('bg-white', 'text-primary', 'border-border', 'shadow-sm');
+    });
+    
+    // Cari tombol mana yang harus aktif
+    var activeBtnId = cat === '' ? 'btnCatAll' : (cat === 'R2' ? 'btnCatR2' : 'btnCatResmi');
+    var activeBtn = document.getElementById(activeBtnId);
+    
+    // Terapkan warna emas pada tombol yang aktif
+    if(activeBtn) {
+      activeBtn.classList.remove('bg-white', 'text-primary', 'border-border', 'shadow-sm');
+      activeBtn.classList.add('bg-gold', 'text-white', 'border-gold', 'shadow-md');
+    }
+  }
+
+  // Menyelaraskan tombol apabila dropdown diubah oleh user secara manual
+  document.addEventListener('DOMContentLoaded', function() {
+    var catSelect = document.getElementById('categoryFilter');
+    if(catSelect) {
+      catSelect.addEventListener('change', function(e) {
+        setCategoryBtn(e.target.value);
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
