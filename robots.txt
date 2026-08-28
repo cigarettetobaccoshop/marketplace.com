@@ -1,21 +1,4 @@
-# robots.txt - R2 Nusantara
-# https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/
-
 User-agent: *
 Allow: /
-Allow: /assets/
-Allow: /index.html
-Allow: /sitemap.xml
-Allow: /manifest.json
-Allow: /style.css
-Allow: /app.js
-Allow: /data.js
 
-# Disallow system files
-Disallow: /404.html
-
-# Crawl-delay
-Crawl-delay: 1
-
-# Sitemap
-Sitemap: https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/sitemap.xml
+Sitemap: https://cigarettetobaccoshop.github.io/id.com/sitemap.xml
